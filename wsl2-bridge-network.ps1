@@ -1,0 +1,3 @@
+netsh interface portproxy reset
+netsh interface portproxy add v4tov4 listenport=8080 listenaddress=0.0.0.0 connectport=8080 connectaddress=$( wsl -e ip addr s dev eth0 | Select-String -Pattern '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' | % { $_.Matches } | % { $_.Value } )
+netsh interface portproxy add v4tov4 listenport=2375 listenaddress=0.0.0.0 connectport=2375 connectaddress=$( wsl -e ip addr s dev eth0 | Select-String -Pattern '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' | % { $_.Matches } | % { $_.Value } )
